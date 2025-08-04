@@ -34,10 +34,13 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www/storage /var/www/bootstrap/cache   
+    && chmod -R 755 /var/www/storage /var/www/bootstrap/cache  
+
+COPY entrypoint.sh /var/www/entrypoint.sh
+RUN chmod +x /var/www/entrypoint.sh
 
 # Expose port 9000
 EXPOSE 9000     
 
 # Start php-fpm server
-CMD ["./entrypoint.sh"]
+CMD ["/var/www/entrypoint.sh"]
