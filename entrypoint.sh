@@ -3,28 +3,15 @@
 # Install composer dependencies
 composer install --no-dev --optimize-autoloader
 
-# Tunggu database siap (opsional, tapi aman)
-echo "⏳ Nunggu database nyala..."
+# Run migration langsung
+echo "🚀 Jalankan migration..."
+php artisan migrate --force --no-interaction
 
-until php -r "
-    try {
-        new PDO(
-            'mysql:host=' . getenv('DB_HOST') . ';port=' . getenv('DB_PORT'),
-            getenv('DB_USERNAME'),
-            getenv('DB_PASSWORD')
-        );
-    } catch (PDOException \$e) {
-        exit(1);
-    }
-" >/dev/null 2>&1; do
-    echo '❌ DB belum siap...'
-    sleep 5
-done
-
-echo "✅ Database siap!"
-
-# Run migration
-php artisan migrate --force
+# (Optional) cache config & route kalau production
+echo "⚙️ Optimize Laravel..."
+php artisan config:cache
+php artisan route:cache
 
 # Start PHP-FPM
+echo "✅ Siap terima request!"
 php-fpm
