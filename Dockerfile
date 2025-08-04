@@ -39,8 +39,8 @@ RUN chown -R www-data:www-data /var/www \
 COPY entrypoint.sh /var/www/entrypoint.sh
 RUN chmod +x /var/www/entrypoint.sh
 
-# Expose port 9000
-EXPOSE 9000     
+# Expose port 8080
+EXPOSE 8080
 
 # Start php-fpm server
 CMD ["./entrypoint.sh"]

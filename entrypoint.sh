@@ -14,4 +14,4 @@ php artisan route:cache
 
 # Start PHP-FPM
 echo "✅ Siap terima request!"
-php-fpm
+php artisan serve --host=0.0.0.0 --port=8080
