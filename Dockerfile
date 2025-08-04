@@ -43,4 +43,4 @@ RUN chmod +x /var/www/entrypoint.sh
 EXPOSE 9000     
 
 # Start php-fpm server
-CMD ["/var/www/entrypoint.sh"]
+CMD ["./entrypoint.sh"]
