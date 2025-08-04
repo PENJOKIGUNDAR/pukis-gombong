@@ -40,4 +40,4 @@ RUN chown -R www-data:www-data /var/www \
 EXPOSE 9000     
 
 # Start php-fpm server
-CMD ["php-fpm"]
+CMD ["./entrypoint.sh"]
