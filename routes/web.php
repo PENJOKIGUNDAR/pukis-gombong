@@ -30,12 +30,12 @@ Route::get('/', function () {
 
 // Authentication routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Registration routes (accessible only by admin in a real app, but keeping it public for demo)
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');;
 
 // Admin Routes
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

@@ -106,7 +106,7 @@
                         </ul>
                     </div>
                 @endif
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login.submit') }}">
                     @csrf
                     <div class="mb-4">
                         <label for="email" class="form-label">Email</label>
